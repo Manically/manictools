@@ -6,13 +6,6 @@ cls
 cd %tmp%\manic
 color 5
 
-:download
-powershell -Command "Invoke-WebRequest https://github.com/ewanj000/ninites/raw/refs/heads/main/runtimes.exe -OutFile runtimes.exe"
-powershell -Command "Invoke-WebRequest https://github.com/ewanj000/ninites/raw/refs/heads/main/gaming.exe -OutFile gaming.exe"
-powershell -Command "Invoke-WebRequest https://github.com/ewanj000/ninites/raw/refs/heads/main/useful.exe -OutFile useful.exe"
-powershell -Command "Invoke-WebRequest https://github.com/ewanj000/ninites/raw/refs/heads/main/office.exe -OutFile office.exe"
-powershell -Command "Invoke-WebRequest https://github.com/ewanj000/ninites/raw/refs/heads/main/dev.exe -OutFile dev.exe"
-
 :start
 title Manic Windows Setup Tool
 call :banner
@@ -38,11 +31,11 @@ echo [38;2;255;255;0m        ║[0m
 echo [38;2;255;255;0m        ╚╦═══════(8) Exit[0m  
 echo [38;2;255;255;0m         ║[0m  
 set /p input=.%BS% [38;2;255;255;0m        ╚══════^>[0m  
-if /I %input% EQU 1 start runtimes.exe
-if /I %input% EQU 2 start gaming.exe
-if /I %input% EQU 3 start useful.exe
-if /I %input% EQU 4 start office.exe
-if /I %input% EQU 5 start dev.exe
+if /I %input% EQU 1 powershell -Command "Invoke-WebRequest https://github.com/ewanj000/ninites/raw/refs/heads/main/runtimes.exe -OutFile runtimes.exe" & start runtimes.exe
+if /I %input% EQU 2 powershell -Command "Invoke-WebRequest https://github.com/ewanj000/ninites/raw/refs/heads/main/gaming.exe -OutFile gaming.exe" & start gaming.exe
+if /I %input% EQU 3 powershell -Command "Invoke-WebRequest https://github.com/ewanj000/ninites/raw/refs/heads/main/useful.exe -OutFile useful.exe" & start useful.exe
+if /I %input% EQU 4 powershell -Command "Invoke-WebRequest https://github.com/ewanj000/ninites/raw/refs/heads/main/office.exe -OutFile office.exe" & start office.exe
+if /I %input% EQU 5 powershell -Command "Invoke-WebRequest https://github.com/ewanj000/ninites/raw/refs/heads/main/dev.exe -OutFile dev.exe" & start dev.exe
 if /I %input% EQU 6 powershell -Command "irm https://get.activated.win/ | iex"
 if /I %input% EQU 7 powershell -Command "iwr -useb https://christitus.com/win | iex"
 if /I %input% EQU 8 del %tmp%\manic /Q & exit
